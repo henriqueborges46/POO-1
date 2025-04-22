@@ -1,36 +1,30 @@
 ﻿using System;
 
-namespace RHApp
+namespace EstacionamentoShopping
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("=== Cadastro de Funcionário ===");
-            Funcionario funcionario = new Funcionario();
-            Console.Write("Nome completo: ");
-            funcionario.NomeCompleto = Console.ReadLine();
-            Console.Write("Salário: ");
-            funcionario.Salario = double.Parse(Console.ReadLine());
+            VagaEstacionamento vaga1 = new VagaEstacionamento(101, "Carro");
 
-            Console.WriteLine("\n=== Cadastro de Gerente ===");
-            Gerente gerente = new Gerente();
-            Console.Write("Nome completo: ");
-            gerente.NomeCompleto = Console.ReadLine();
-            Console.Write("Salário: ");
-            gerente.Salario = double.Parse(Console.ReadLine());
-            Console.Write("Departamento: ");
-            gerente.Departamento = Console.ReadLine();
+            Console.WriteLine("Informações iniciais da vaga:");
+            vaga1.ExibirInformacoes();
 
-            Console.Clear();
-            Console.WriteLine("=== DADOS FUNCIONÁRIO ===");
-            funcionario.ExibirDados();
+            Console.WriteLine("\n== Ocupando vaga ==");
+            vaga1.OcuparVaga();
+            vaga1.ExibirInformacoes();
 
-            Console.WriteLine("\n=== DADOS GERENTE ===");
-            gerente.ExibirDados();
+            Console.WriteLine("\n== Tentando alterar tipo com vaga ocupada ==");
+            vaga1.AlterarTipoVeiculo("Moto");
 
-            Console.WriteLine("\nPressione qualquer tecla para sair...");
-            Console.ReadKey();
+            Console.WriteLine("\n== Liberando vaga e alterando tipo ==");
+            vaga1.LiberarVaga();
+            vaga1.AlterarTipoVeiculo("Moto");
+            vaga1.ExibirInformacoes();
+
+            Console.WriteLine("\n== Tentando tipo inválido ==");
+            vaga1.AlterarTipoVeiculo("Bicicleta");
         }
     }
 }
